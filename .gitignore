@@ -1,1 +1,7 @@
 node_modules
+.vscode
+Task_3/test-results/
+Task_3/reports/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
