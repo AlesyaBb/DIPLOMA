@@ -1,3 +1,5 @@
+//UI TESTING
+
 import { test } from '@playwright/test';
 import { PageFactory } from '../src/pageobjects/pageFactory';
 import { HomePage } from '../src/pageobjects/homePage';
