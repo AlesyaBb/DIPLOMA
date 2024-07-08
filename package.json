@@ -5,7 +5,7 @@
   "scripts": {
     "test_Task_1": "jest Task_1/tests/mathOperationsTests.spec.ts",
     "test_Task_2": "jest Task_2/tests/api.spec.ts",
-    "test_Task_3": "rm -rf Task_3/reports/allure-report && rm -rf Task_3/reports/allure-results && playwright test example.spec.ts && mv allure-results Task_3/reports",
+    "test_Task_3": "rm -rf Task_3/reports/allure-report && rm -rf Task_3/reports/allure-results && playwright test paraBankTest.spec.ts && mv allure-results Task_3/reports",
     "report_Task_3": "allure generate Task_3/reports/allure-results --clean -o Task_3/reports/allure-report && allure open Task_3/reports/allure-report"
   },
   "keywords": [],

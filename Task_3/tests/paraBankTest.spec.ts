@@ -21,26 +21,26 @@ test.describe(`Test ParaBank https://parabank.parasoft.com/}`, () => {
         await homePage.openPage();
     });
 
-    test.describe(`Неавторизованная зона`, () => {
+    test.describe(`Unauthorized zone`, () => {
 
-        test('Проверка заголовка  главной страницы', async ({ page }) => {
+        test('Checking the Home Page Title', async ({ page }) => {
             await homePage.checkTitleHomePage();
         });
 
-        test('Переход на главную страницу по клику на логотип', async ({ page }) => {
+        test('Go to the main page by clicking on the logo', async ({ page }) => {
             const registrationPage = await PageFactory.getPage(page, "RegistrationPage") as RegistrationPage;
         
             await registrationPage.clickOnLogo();
             await registrationPage.checkCurrentUrl(homePage.urlPage);
         });
 
-        test('Проверка ссылок по клику на кнопки в headerPanel', async ({ page }) => {
+        test('Checking links by clicking buttons in headerPanel', async ({ page }) => {
             const headerPanel = await PageFactory.getPage(page, "HeaderPanel") as HeaderPanel;
             
             await headerPanel.checkHeaderPanelLinks();
         });
 
-        test('Отправка email в техподдержку', async ({ page }) => {
+        test('Sending an email to technical support', async ({ page }) => {
             const сontactPage = await PageFactory.getPage(page, "ContactPage") as ContactPage;
         
             await сontactPage.openPage();
@@ -48,7 +48,7 @@ test.describe(`Test ParaBank https://parabank.parasoft.com/}`, () => {
             await сontactPage.checkSupportMessageSubmissionResult(validationMessages.successfulSupportMessageSubmission);
         });
 
-        test('Авторизация валидным пользователем', async ({ page }) => {
+        test('Authorization by a valid user', async ({ page }) => {
             const loginPage = await PageFactory.getPage(page, "LoginPage") as LoginPage;
             const overviewPage = await PageFactory.getPage(page, "OverviewPage") as OverviewPage;
         
@@ -56,7 +56,7 @@ test.describe(`Test ParaBank https://parabank.parasoft.com/}`, () => {
             await overviewPage.checkCurrentUrl(overviewPage.urlPage);
         });
 
-        test('Авторизация невалидным пользователем', async ({ page }) => {
+        test('Authorization by invalid user', async ({ page }) => {
             const loginPage = await PageFactory.getPage(page, "LoginPage") as LoginPage;
 
             await loginPage.login('123TestTMS', '123');
@@ -64,7 +64,7 @@ test.describe(`Test ParaBank https://parabank.parasoft.com/}`, () => {
         });
     });
     
-    test.describe(`Авторизованная зона`, () => {
+    test.describe(`Authorized zone`, () => {
         let loginPage: LoginPage;
 
         test.beforeEach(async ({ page }) => {
@@ -72,7 +72,7 @@ test.describe(`Test ParaBank https://parabank.parasoft.com/}`, () => {
             await loginPage.login(registeredUser.username, registeredUser.password);
         });
 
-        test('Открытие нового счета', async ({ page }) => {
+        test('Open new account', async ({ page }) => {
             const openaccountPage = await PageFactory.getPage(page, "OpenaccountPage") as OpenaccountPage;
           
             await openaccountPage.openPage();
@@ -80,7 +80,7 @@ test.describe(`Test ParaBank https://parabank.parasoft.com/}`, () => {
             await openaccountPage.verifyOpenNewAccountSuccess('Congratulations, your account is now open.')
         });
 
-        test('Перевод средств между счетами', async ({ page }) => {
+        test('Transfer funds', async ({ page }) => {
             const transferPage = await PageFactory.getPage(page, "TransferPage") as TransferPage;
           
             await transferPage.openPage();
@@ -88,9 +88,9 @@ test.describe(`Test ParaBank https://parabank.parasoft.com/}`, () => {
             await transferPage.verifyTransferFundsSuccess('Transfer Complete!')
         });
 
-        test.describe(`Запрос кредита`, () => {
+        test.describe(`Request loan`, () => {
 
-            test('Запросить кредит', async ({ page }) => {
+            test('Request loan', async ({ page }) => {
                 const requestloanPage = await PageFactory.getPage(page, "RequestloanPage") as RequestloanPage;
             
                 await requestloanPage.openPage();
@@ -99,7 +99,7 @@ test.describe(`Test ParaBank https://parabank.parasoft.com/}`, () => {
                 await requestloanPage.checkLoanApplicationSuccessMessage(validationMessages.loanApplicationSuccessMessage);
             });
 
-            test('Запросить кредит c суммой больше допустимой', async ({ page }) => {
+            test('Request a loan with an amount greater than allowed', async ({ page }) => {
                 const requestloanPage = await PageFactory.getPage(page, "RequestloanPage") as RequestloanPage;
             
                 await requestloanPage.openPage();

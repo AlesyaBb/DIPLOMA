@@ -8,184 +8,179 @@ describe('MathOperations', () => {
         mathOperations = new MathOperations();
     });
   
-    describe('power', () => {
-        describe('positive test', () => {
-            test('Возведение положительного числа в положительную степень', () => {
+    describe('Power', () => {
+        describe('Positive test', () => {
+            test('Raising a positive number to a positive power', () => {
                 const result = MathOperations.power(2, 3);
                 expect(result).toBe(8);
             });
 
-            test('Возведение числа в степень 0', () => {
+            test('Raising a number to the power 0', () => {
                 const result = MathOperations.power(2, 0);
                 expect(result).toBe(1);
             });
 
-            test('Возведение числа 0 в степень', () => {
+            test('Raising the number 0 to a power', () => {
                 const result = MathOperations.power(0, 3);
                 expect(result).toBe(0);
             });
 
-            test('Возведение отрицательного числа в положительную степень', () => {
+            test('Raising a negative number to a positive power', () => {
                 const result = MathOperations.power(-2, 3);
                 expect(result).toBe(-8);
             });
 
-            test('Возведение положительного числа в отрицательную степень', () => {
+            test('Raising a positive number to a negative power', () => {
                 const result = MathOperations.power(2, -3);
                 expect(result).toBeCloseTo(0.125);
             });
 
-            test('Возведение числа в дробную степень', () => {
+            test('Raising a number to a fractional power', () => {
                 const result = MathOperations.power(9, 0.5);
                 expect(result).toBe(3);
             });
         });
     });
 
-    describe('sqrt', () => {
-        describe('positive test', () => {
-            test('Нахождение квадратного корня положительного числа', () => {
+    describe('Sqrt', () => {
+        describe('Positive test', () => {
+            test('Finding the square root of a positive number', () => {
                 const result = MathOperations.sqrt(4);
                 expect(result).toBe(2);
             });
 
-            test('Нахождение квадратного корня нуля', () => {
+            test('Finding the square root of zero', () => {
                 const result = MathOperations.sqrt(0);
                 expect(result).toBe(0);
             });
         });
 
-        describe('negative test', () => {
-            test('Нахождение квадратного корня отрицательного целого числа', () => {
+        describe('Negative test', () => {
+            test('Finding the square root of a negative integer', () => {
                 const result = () => MathOperations.sqrt(-1);
                 expect(result).toThrow("Square root of negative number");
             });
 
-            test('Нахождение квадратного корня отрицательного дробного числа', () => {
+            test('Finding the square root of a negative fractional number', () => {
                 const result = () => MathOperations.sqrt(-1.5678);
                 expect(result).toThrow("Square root of negative number");
             });
 
-            test('Нахождение квадратного корня отрицательного числа близкого к нулю', () => {
+            test('Finding the square root of a negative number close to zero', () => {
                 const result = () => MathOperations.sqrt(-0.001);
                 expect(result).toThrow("Square root of negative number");
             });
         });
     });
 
-    describe('max', () => {
-        describe('positive test', () => {
-            test('Нахождение максимального значения в массиве положительных чисел', () => {
+    describe('Max', () => {
+        describe('Positive test', () => {
+            test('Finding the maximum value in an array of positive numbersл', () => {
                 const result = MathOperations.max([1, 2, 3, 4, 5]);
                 expect(result).toBe(5);
             });
 
-            test('Нахождение максимального значения в массиве отрицательных чисел', () => {
+            test('Finding the maximum value in an array of negative numbers', () => {
                 const result = MathOperations.max([-1, -2, -3, -4, -5]);
                 expect(result).toBe(-1);
             });
         });
 
-        describe('negative test', () => {
-            test('Нахождение максимального значения в пустом массиве', () => {
+        describe('Negative test', () => {
+            test('Finding the maximum value in an empty array', () => {
                 const result = () => MathOperations.max([]);
                 expect(result).toThrow("Array is empty");
             });
-            test('Нахождение максимального значения в массиве с разными типами данных', () => {
+            test('Finding the maximum value in an array with different data types', () => {
                 const result = MathOperations.max([1, 'two', 3, 'four']);
                 expect(result).toBe(NaN);
             });
 
-            test('Нахождение максимального значения в массиве с типами данных "строка"', () => {
+            test('Finding the maximum value in an array with data types "string"', () => {
                 const result = MathOperations.max(['try', 'two', 'ghf', 'four']);
                 expect(result).toBe(NaN);
             });
 
             
-            test('Нахождение максимального значения в массиве с типами данных "undefined"', () => {
+            test('Finding the maximum value in an array with data types "undefined"', () => {
                 const result = MathOperations.max([undefined, undefined]);
                 expect(result).toBe(NaN);
             });
 
-            test('Передача массива с неподдерживаемыми типами данных', () => {
+            test('Passing an array with unsupported data types', () => {
                 const result = MathOperations.max([null, [], {}, true]);
                 expect(result).toBeNaN();
             });
         });
     });
 
-    describe('min', () => {
-        describe('positive test', () => {
-            test('Нахождение минимального значения в массиве положительных чисел', () => {
+    describe('Min', () => {
+        describe('Positive test', () => {
+            test('Finding the minimum value in an array of positive numbers', () => {
                 const result = MathOperations.min([1, 2, 3, 4, 5]);
                 expect(result).toBe(1);
             });
 
-            test('Нахождение минимального значения в массиве отрицательных чисел', () => {
+            test('Finding the minimum value in an array of negative numbers', () => {
                 const result = MathOperations.min([-1, -2, -3, -4, -5]);
                 expect(result).toBe(-5);
             });
         });
 
-        describe('negative test', () => {
-            test('Нахождение минимального значения в пустом массиве', () => {
+        describe('Negative test', () => {
+            test('Finding the minimum value in an empty array', () => {
                 const result = () => MathOperations.min([]);
                 expect(result).toThrow("Array is empty");
             });
-            test('Нахождение минимального значения в массиве с разными типами данных', () => {
+            test('Finding the minimum value in an array with different data types', () => {
                 const result = MathOperations.max([1, 'two', 3, 'four']);
                 expect(result).toBe(NaN);
             });
 
-            test('Нахождение максимального значения в массиве с типами данных "строка"', () => {
+            test('Finding the maximum value in an array with data types "string"', () => {
                 const result = MathOperations.max(['try', 'two', 'ghf', 'four']);
                 expect(result).toBe(NaN);
             });
 
-            test('Нахождение максимального значения в массиве с типами данных "undefined"', () => {
+            test('Finding the maximum value in an array with data types "undefined"', () => {
                 const result = MathOperations.max([undefined, undefined]);
                 expect(result).toBe(NaN);
             });
 
-            test('Передача массива с неподдерживаемыми типами данных', () => {
+            test('Passing an array with unsupported data types', () => {
                 const result = MathOperations.max([null, [], {}, true]);
                 expect(result).toBeNaN();
             });
         });
     });
 
-    describe('average', () => {
-        describe('positive test', () => {
-            test('Нахождение среднего арифметического массива положительных чисел', () => {
+    describe('Average', () => {
+        describe('Positive test', () => {
+            test('Finding the arithmetic mean of an array of positive numbers', () => {
                 const result = MathOperations.average([1, 2, 3, 4, 5]);
                 expect(result).toBe(3);
             });
 
-            test('Нахождение среднего арифметического массива отрицательных чисел', () => {
+            test('Finding the arithmetic mean of an array of negative numbers', () => {
                 const result = MathOperations.average([-1, -2, -3, -4, -5]);
                 expect(result).toBe(-3);
             });
 
-            test('Нахождение среднего арифметического массива с одним элементом', () => {
+            test('Finding the arithmetic mean of an array with one element', () => {
                 const result = MathOperations.average([42]);
                 expect(result).toBe(42);
             });
         });
 
-        describe('negative test', () => {
-            test('Нахождение среднего арифметического пустого массива', () => {
+        describe('Negative test', () => {
+            test('Finding the arithmetic mean of an empty array', () => {
                 const result = () => MathOperations.average([]);
                 expect(result).toThrow("Array is empty");
             });
-            test('Нахождение среднего арифметического массива с разными типами данных', () => {
+            test('Finding the arithmetic average of an array with different data types', () => {
                 const result = MathOperations.average([1, 2, 3, 'four']);
                 expect(result).toBeNaN();
             });
         });
-    });
-
-        
-  
-
-
+    });   
 });
